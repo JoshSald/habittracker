@@ -14,12 +14,21 @@ function App() {
   }, [habits]);
 
   const addHabit = (habit) => setHabits([...habits, habit]);
+  const deleteHabit = (habitId) => {
+    const updated = habits.filter((h) => h.id !== habitId);
+    setHabits(updated);
+  };
+
   return (
     <div className="">
       <Navmenu />
       <div className="w-full container px-6 mx-auto">
         <HabitForm onAdd={addHabit} />
-        <HabitList habits={habits} />
+        <HabitList
+          habits={habits}
+          setHabits={setHabits}
+          onDelete={deleteHabit}
+        />
       </div>
     </div>
   );

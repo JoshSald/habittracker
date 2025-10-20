@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Navmenu from "./components/Nav";
 import HabitForm from "./components/HabitForm";
+import HabitList from "./components/HabitList";
 
 function App() {
   const [habits, setHabits] = useState(() => {
@@ -18,6 +19,7 @@ function App() {
       <Navmenu />
       <div className="w-full container px-6 mx-auto">
         <HabitForm onAdd={addHabit} />
+        <HabitList habits={habits} />
       </div>
     </div>
   );

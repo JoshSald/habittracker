@@ -1,5 +1,11 @@
+import Navmenu from "./components/Nav";
+
 function App() {
-  return <></>;
+  return (
+    <div className="">
+      <Navmenu />
+    </div>
+  );
 }
 
 export default App;

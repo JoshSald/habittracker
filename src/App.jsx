@@ -3,6 +3,7 @@ import Navmenu from "./components/Nav";
 import HabitForm from "./components/HabitForm";
 import HabitList from "./components/HabitList";
 import DailyProgress from "./components/Progress";
+import { BackgroundLines } from "./components/ui/background-lines";
 
 function App() {
   const [habits, setHabits] = useState(() => {
@@ -32,12 +33,20 @@ function App() {
       )
     );
   };
+  const total = habits.length;
+  const completed = habits.filter((h) => h.completed).length;
+  const progressAmount = total === 0 ? 0 : (completed / total) * 100;
 
   return (
-    <div className="">
+    <div className="relative">
+      {progressAmount > 99 && (
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <BackgroundLines className="bg-transparent" />
+        </div>
+      )}
       <Navmenu />
       <div className="w-full container px-6 mx-auto">
-        <DailyProgress habits={habits} />
+        <DailyProgress habits={habits} progress={progressAmount} />
         <HabitForm onAdd={addHabit} />
         <HabitList
           habits={habits}

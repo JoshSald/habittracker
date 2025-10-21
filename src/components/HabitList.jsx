@@ -1,6 +1,11 @@
 import HabitListItem from "./HabitListItem";
 
-export default function HabitList({ habits, setHabits, onDelete }) {
+export default function HabitList({
+  habits,
+  setHabits,
+  onDelete,
+  onAddProgress,
+}) {
   const toggleComplete = (id) => {
     setHabits((prev) =>
       prev.map((h) => (h.id === id ? { ...h, completed: !h.completed } : h))
@@ -18,6 +23,7 @@ export default function HabitList({ habits, setHabits, onDelete }) {
             habit={habit}
             onToggleComplete={toggleComplete}
             onDelete={onDelete}
+            onAddProgress={onAddProgress}
           />
         ))
       )}

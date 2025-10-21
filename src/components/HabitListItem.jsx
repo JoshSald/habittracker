@@ -5,14 +5,15 @@ import { Button } from "./ui/button";
 export default function HabitListItem({
   habit,
   onToggleComplete,
-  onDelete,
   onAddProgress,
+  onDelete,
 }) {
   const isComplete = habit.completed || false;
   const remaining = habit.goal - (habit.count || 0);
 
   return (
     <div className="relative flex items-center group">
+      {/* Main card */}
       <div
         className={`p-4 border rounded-2xl flex-1 flex justify-between items-center shadow-sm transition-all cursor-pointer ${
           isComplete
@@ -20,9 +21,13 @@ export default function HabitListItem({
             : "bg-white hover:bg-gray-50"
         }`}
       >
+        {/* Habit info */}
         <div className="flex flex-col">
           <h3 className="font-semibold">{habit.name}</h3>
-          <p className="text-sm text-gray-500">{habit.goal} per day</p>
+          <p className="text-sm text-gray-500">
+            {habit.goal} per day
+            {habit.goal > 1 ? ` — ${habit.count || 0} done` : ""}
+          </p>
         </div>
 
         {/* Action button */}

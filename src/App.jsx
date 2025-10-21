@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navmenu from "./components/Nav";
 import HabitForm from "./components/HabitForm";
 import HabitList from "./components/HabitList";
+import DailyProgress from "./components/Progress";
 
 function App() {
   const [habits, setHabits] = useState(() => {
@@ -23,6 +24,7 @@ function App() {
     <div className="">
       <Navmenu />
       <div className="w-full container px-6 mx-auto">
+        <DailyProgress habits={habits} />
         <HabitForm onAdd={addHabit} />
         <HabitList
           habits={habits}

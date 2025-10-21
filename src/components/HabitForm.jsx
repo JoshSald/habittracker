@@ -13,7 +13,10 @@ export default function HabitForm({ onAdd }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2 items-center mt-4">
+    <form
+      onSubmit={handleSubmit}
+      className="flex justify-center gap-2 items-center mt-4"
+    >
       <input
         type="text"
         placeholder="New habit (e.g. Drink Water)"

@@ -2,8 +2,14 @@
 
 import { Button } from "./ui/button";
 
-export default function HabitListItem({ habit, onToggleComplete, onDelete }) {
+export default function HabitListItem({
+  habit,
+  onToggleComplete,
+  onDelete,
+  onAddProgress,
+}) {
   const isComplete = habit.completed || false;
+  const remaining = habit.goal - (habit.count || 0);
 
   return (
     <div className="relative flex items-center group">
@@ -19,13 +25,23 @@ export default function HabitListItem({ habit, onToggleComplete, onDelete }) {
           <p className="text-sm text-gray-500">{habit.goal} per day</p>
         </div>
 
-        <Button
-          className={isComplete && "bg-green-500 hover:bg-green-700"}
-          variant={isComplete ? "default" : "outline"}
-          onClick={() => onToggleComplete(habit.id)}
-        >
-          {isComplete ? "Complete" : "Incomplete"}
-        </Button>
+        {/* Action button */}
+        {habit.goal === 1 ? (
+          <Button
+            variant={isComplete ? "default" : "outline"}
+            onClick={() => onToggleComplete(habit.id)}
+          >
+            {isComplete ? "Complete" : "Add Progress"}
+          </Button>
+        ) : (
+          <Button
+            variant={isComplete ? "default" : "outline"}
+            onClick={() => onAddProgress(habit.id)}
+            disabled={isComplete}
+          >
+            {isComplete ? "Complete" : `Add Progress (${remaining} left)`}
+          </Button>
+        )}
       </div>
 
       <Button

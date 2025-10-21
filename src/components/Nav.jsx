@@ -12,7 +12,7 @@ export default function Navmenu() {
     <div className="relative p-4 w-full bg-zinc-200">
       <Navbar>
         {/* Desktop Navigation */}
-        <NavBody>
+        <NavBody className="flex justify-center">
           <NavbarLogo />
         </NavBody>
 

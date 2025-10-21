@@ -36,7 +36,7 @@ export default function HabitListItem({
             variant={isComplete ? "default" : "outline"}
             onClick={() => onToggleComplete(habit.id)}
           >
-            {isComplete ? "Complete" : "Incomplete"}
+            {isComplete ? "Complete" : "Add Progress"}
           </Button>
         ) : (
           <Button

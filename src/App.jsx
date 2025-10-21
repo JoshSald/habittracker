@@ -18,6 +18,19 @@ function App() {
     const updated = habits.filter((h) => h.id !== habitId);
     setHabits(updated);
   };
+  const addProgress = (id) => {
+    setHabits((prev) =>
+      prev.map((h) =>
+        h.id === id
+          ? {
+              ...h,
+              count: (h.count || 0) + 1,
+              completed: (h.count || 0) + 1 >= h.goal,
+            }
+          : h
+      )
+    );
+  };
 
   return (
     <div className="">
@@ -28,6 +41,7 @@ function App() {
           habits={habits}
           setHabits={setHabits}
           onDelete={deleteHabit}
+          onAddProgress={addProgress}
         />
       </div>
     </div>
